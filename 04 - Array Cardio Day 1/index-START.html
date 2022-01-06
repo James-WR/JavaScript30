@@ -52,8 +52,8 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    const yearsTotal = inventors.reduce((total, a) => {
-      return total + (a.passed - a.year);
+    const yearsTotal = inventors.reduce((runningTotal, a) => {
+      return runningTotal + (a.passed - a.year);
     }, 0);
     console.log(yearsTotal);
 
@@ -72,10 +72,21 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alphabetical = people.sort();
+    console.log(alphabetical);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const tally = data.reduce((runningTotal, currentElement) => { /* currentElement in the iteration process */
+      if(!runningTotal[currentElement]) { /* if there is no key representing the currentElement, */
+        runningTotal[currentElement] = 0; /* create one and initialise its value at 0 */
+      }
+      runningTotal[currentElement] ++; /* next, increment the value by one for the currentElement */
+      return runningTotal;
+    }, {}); /* the last parameter {} is an empty object, which defines the starting point for runningTotal */
+    console.log(tally);
 
   </script>
 </body>
