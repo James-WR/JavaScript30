@@ -21,10 +21,22 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #ffc600;
+      --spacing: 20px;
+      --blur: 0.08px;
+    }
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
 
     body {
       text-align: center;
@@ -45,6 +57,16 @@
   </style>
 
   <script>
+
+    function update() {
+      const pixels = this.dataset.sizing || ""
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + pixels)
+    }
+
+    const inputs = document.querySelectorAll("input")
+    inputs.forEach((input) => {
+      input.addEventListener("input", (update))
+    })
   </script>
 
 </body>
