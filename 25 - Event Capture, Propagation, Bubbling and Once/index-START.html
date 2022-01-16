@@ -17,9 +17,9 @@
   html {
     box-sizing: border-box;
   }
-  
-  *, *:before, *:after { 
-    box-sizing: inherit; 
+
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
 
   div {
@@ -42,6 +42,21 @@
 
 <button></button>
 <script>
+
+function logText(e) {
+  console.log(this.classList.value)
+  e.stopPropagation()
+}
+
+const selectAllDivs = document.querySelectorAll("div");
+
+selectAllDivs.forEach(div => div.addEventListener("click", logText, {capture: TextTrackCueList
+}));
+
+const button = document.querySelector("button");
+button.addEventListener("click", (event) => {
+  console.log("clicked!")
+}, {once: true})
 
 </script>
 </body>
