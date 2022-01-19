@@ -66,10 +66,19 @@
       width: 100%;
       transition: transform 0.5s;
       flex: 1 0 auto;
+
     }
 
     .panel > *:first-child {
       transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child {
+      transform: translateY(0%);
+    }
+
+     .panel.open-active > *:last-child {
+      transform: translateY(0%);
     }
 
     .panel > *:last-child {
@@ -90,6 +99,7 @@
 
     .panel.open {
       font-size: 40px;
+      flex: 5;
     }
 
   </style>
@@ -124,6 +134,26 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll(".panel")
+
+    function togglePanel() {
+      this.classList.toggle("open");
+    }
+
+    function secondToggle(event) {
+      if (event.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+
+    panels.forEach((panel) => {
+      panel.addEventListener('click', togglePanel);
+    });
+
+    panels.forEach((panel) => {
+      panel.addEventListener('transitionend', secondToggle);
+    });
 
   </script>
 
