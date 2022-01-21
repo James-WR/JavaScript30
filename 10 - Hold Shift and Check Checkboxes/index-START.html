@@ -108,7 +108,7 @@ function handleTick(event) {
   let inBetween = false; //flag variable
   if (event.shiftKey && this.checked) { //if the click event is happening while the shift key is down and the tickbox is being checked:
     boxes.forEach((box) => {
-      if (box === this || box === lastTicked) { // there are two conditions for changing the in between status:
+      if (box === this || box === lastTicked) { // there are two conditions for changing the inBetween status:
         // if the box we clicked is equal to the one we are currently looping over or to last box we checked
         inBetween = !inBetween;
       }
