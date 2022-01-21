@@ -18,28 +18,59 @@
     }
 
     // Regular
+    console.log("Hello there, my name is James.")
 
     // Interpolated
+    const name = "James"
+    console.log(`Hello there, my name is ${name}.`)
 
     // Styled
+    console.log("%cHello there, my name is James.", "color: blue;")
 
     // warning!
+    console.warn("Hello there, my name is James.")
 
     // Error :|
+    console.error("Hello there, my name is James.")
 
     // Info
+    console.info("Hello there, my name is James.")
 
     // Testing
+    console.assert( 1 === 2, "Hello there, my name is James.")
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    const paragraph = document.querySelector("p");
+    console.dir(paragraph)
 
     // Grouping together
+      dogs.forEach(dog => {
+          console.groupCollapsed(`${dog.name}`);
+          console.log(`This is ${dog.name}`);
+          console.log(`${dog.name} is ${dog.age} years old`);
+          console.log(`${dog.name} is ${dog.age * 6} dog years old`);
+          console.groupEnd(`${dog.name}`);
+        });
+
 
     // counting
+    console.count("James")
+    console.count("James")
+    console.count("James")
 
     // timing
+    console.time('fetching data');
+      fetch('https://api.github.com/users/wesbos')
+        .then(data => data.json())
+        .then(data => {
+          console.timeEnd('fetching data');
+          console.log(data);
+        });
+
+    console.table(dogs)
 
   </script>
 </body>
