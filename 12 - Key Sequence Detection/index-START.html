@@ -7,6 +7,19 @@
 </head>
 <body>
 <script>
+const keys = []
+const magicWord = "james"
+document.addEventListener("keyup", event => {
+  keys.push(event.key);
+  keys.splice(0, keys.length - magicWord.length); // Params represent: start deleting at this index, delete count.
+  // i.e. Start deleting as soon as the keys length becomes 6, because 6 - 5(length of magic word) is 1, and then delete the first
+  // element of the array, which is at position 0, to make way for the new element.
+  if (keys.join("").includes(magicWord)){
+    console.log("Hooray! Best name!")
+    cornify_add()
+  };
+});
+
 </script>
 </body>
 </html>
