@@ -38,6 +38,7 @@
   const items = JSON.parse(localStorage.getItem('items')) || [];
 
   addItems.addEventListener("submit", addToArray)
+  itemsList.addEventListener("click", toggleDone)
 
   function addToArray() {
     event.preventDefault()
@@ -62,7 +63,21 @@
     `
     }).join("");
   }
+
+  function toggleDone() {
+    if(!event.target.matches('input')) return; // we only want to trigger something if it's an input
+    const element = event.target
+    const index = element.dataset.index
+    items[index].done = !items[index].done
+    localStorage.setItem('items', JSON.stringify(items))
+    displayItems(items)
+  }
+
+
+
   displayItems(items)
+
+
 
 
 </script>
